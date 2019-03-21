@@ -1,10 +1,8 @@
 # LFA - Proiect 1
 # Realizator - Bratu Dragos
 # Coordonator - Cosmin-Silvian Alexandru
-
-## Laborator LFA-Proiect 1
 ## Enuntul cerintei:
-Pentru un automat finit si un cuvant dat, sa se decida daca acel cuvant apartine sau nu limbajului recunoscut de automat. 
+#### Pentru un automat finit si un cuvant dat, sa se decida daca acel cuvant apartine sau nu limbajului recunoscut de automat. 
    
 ## Variabile folosite:
 
