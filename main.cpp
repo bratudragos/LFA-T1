@@ -4,7 +4,7 @@
 using namespace std;
 ifstream f("date.txt");
 
-int drumuridinstare[10000],a[100][100],iesire[100];
+int a[100][100],iesire[100];
 int i,j,init, final, starestart, nriesire, nrstari, nrlegaturi;
 char s[100],lit;
 int main() {
@@ -33,7 +33,6 @@ int main() {
         f >> final;
         //cout<<final;
         a[init][lit - 31] = final;
-        drumuridinstare[init]++;
 
     }
     //cout << "\nintroduceti numarul starilor de iesire:";
