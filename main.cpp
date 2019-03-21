@@ -4,107 +4,107 @@
 using namespace std;
 ifstream f("date.txt");
 
-int a[100][100],iesire[100];
-int i,j,init, final, starestart, nriesire, nrstari, nrlegaturi;
-char s[100],lit;
-int main() {
+int main()
+{
 
-    for(i=0;i<100;i++)
-        for(j=0;j<100;j++)
-            a[i][j]=-1;
+    int automat[100][100], iesire[100];
+    int i, j, stareInitiala, stareFinala, stareStart, numarIesiri, numarStari, numarLegaturi;
+    char cuvantDeVerificat[100], literaLegatura;
+
+    for (i = 0; i < 100; i++)
+        for (j = 0; j < 100; j++)
+            automat[i][j] = -1;
+
+    for (i = 0; i < 100; i++)
+        iesire[i] = 0;
     //cout << "\nnumarul de stari=";
-    f >> nrstari;
-    //cout<<nrstari;
+    f >> numarStari;
+    //cout<<numarStari;
     //cout << "\nintroduceti numarul de legaturi:";
-    f >> nrlegaturi;
-    //cout<<nrlegaturi;
+    f >> numarLegaturi;
+    //cout<<numarLegaturi;
     //cout << "\nintroduceti starea de start:";
-    f >> starestart;
-    //cout<<starestart;
-    for (i = 0; i < nrlegaturi; i++) {
+    f >> stareStart;
+    //cout<<stareStart;
+    for (i = 0; i < numarLegaturi; i++) {
         //cout<<"\nlegatura numarul:"<<i+1;
         //cout << "\nintroduceti starea din care pleaca legatura:";
-        f >> init;
-        //cout<<init;
+        f >> stareInitiala;
+        //cout<<stareInitiala;
         //cout << "introduceti litera de legatura:";
-        f >> lit;
-        //cout<<lit;
+        f >> literaLegatura;
+        //cout<<literaLegatura;
         //cout << "introduceti starea in care ajunge legatura:";
-        f >> final;
-        //cout<<final;
-        a[init][lit - 31] = final;
-
+        f >> stareFinala;
+        //cout<<stareFinala;
+        automat[stareInitiala][literaLegatura - 31] = stareFinala;
     }
     //cout << "\nintroduceti numarul starilor de iesire:";
-    f >> nriesire;
-    //cout<<nriesire;
-    for (i = 0; i < nriesire; i++) {
+    f >> numarIesiri;
+    //cout<<numarIesiri;
+    for (i = 0; i < numarIesiri; i++) {
         //cout << "\nintroduceti starea de iesire:";
         f >> iesire[i];
         //cout<<iesire[i];
     }
 
     //cout << "\nintroduceti cuvantul de verificat:";
-    f>>s;
-    //cout<<s;
+    f >> cuvantDeVerificat;
+    //cout<<cuvantDeVerificat;
 
     f.close();
-
-    if (!strlen(s))
-    {
-        for (i = 0; i < nriesire; i++)
-        {
-            if (iesire[i] == starestart)
-            {
+    // cazul in care a fost citit cuvantul vid
+    if (!strlen(cuvantDeVerificat)) {
+        for (i = 0; i < numarIesiri; i++) {
+            if (iesire[i] == stareStart) {
                 cout << "\napartine";
                 return 0;
             }
         }
-        cout<<"\nnu apartine";
+        cout << "\nnu apartine";
         return 0;
     }
-    else {
-            if(a[starestart][s[0]-31]!=-1)
-            {
-                init=a[starestart][s[0]-31];
-                strcpy(s,s+1);
-                if(!strlen(s)){
-                    for (j = 0; j < nriesire; j++)
-                    {
-                        if (iesire[j] == init)
-                        {
-                            cout << "\napartine";
-                            return 0;
-                        }
-                    }
-                    cout<<"\nnu apartine";
-                    return 0;
-                }
-            }
-            else {
-                cout<<"\nnu apartine";
-                return 0;
-            }
-
-        while (strlen(s)) {
-            if(a[init][s[0]-31]!=-1){
-                init=a[init][s[0]-31];
-                strcpy(s,s+1);
-            }
-            else{
-                cout<<"\nnu apartine";
-                return 0;
-            }
-            if(!strlen(s)){
-                for (j = 0; j < nriesire; j++)
-                {
-                    if (iesire[j] == init)
-                    {
+    else { //daca exista legatura
+        if (automat[stareStart][cuvantDeVerificat[0] - 31] != -1) {
+            //eliminam prima litera,schimbam starea
+            stareInitiala = automat[stareStart][cuvantDeVerificat[0] - 31];
+            strcpy(cuvantDeVerificat, cuvantDeVerificat + 1);
+            //daca cuvantul era format doar dintr-o litera
+            if (!strlen(cuvantDeVerificat)) {
+                for (j = 0; j < numarIesiri; j++) {
+                    if (iesire[j] == stareInitiala) {
                         cout << "\napartine";
                         return 0;
                     }
                 }
-                cout<<"\nnu apartine";
+                cout << "\nnu apartine";
+                return 0;
+            }
+        }
+        else {
+            cout << "\nnu apartine";
+            return 0;
+        }
+
+        while (strlen(cuvantDeVerificat)) {
+            //daca exista legatura
+            if (automat[stareInitiala][cuvantDeVerificat[0] - 31] != -1) {
+                stareInitiala = automat[stareInitiala][cuvantDeVerificat[0] - 31];
+                strcpy(cuvantDeVerificat, cuvantDeVerificat + 1);
+            }
+            else {
+                cout << "\nnu apartine";
+                return 0;
+            }
+            //daca am ajuns la cuvantul vid
+            if (!strlen(cuvantDeVerificat)) {
+                for (j = 0; j < numarIesiri; j++) {
+                    if (iesire[j] == stareInitiala) {
+                        cout << "\napartine";
+                        return 0;
+                    }
+                }
+                cout << "\nnu apartine";
                 return 0;
             }
         }
