@@ -9,18 +9,18 @@ Pentru un automat finit si un cuvant dat, sa se decida daca acel cuvant apartine
 ## Variabile folosite:
 
 * int automat[100][100]: matricea automatului;
-Pentru reprezentarea automatului si a legaturilor,am folosit o matrice,in care elementele a[stareInitiala][literaLegatura] = stareFinala au urmatoarea configuratie:\
-  * stareInitiala- variabila de tip int pentru starea din care pleaca legatura;\
-  * literaLegatura- variabila de tip char ce reprezinta litera de legatura intre cele doua stari;\
-  * stareFinala- variabila de tip int ce reprezinta starea in care ajunge legatura.\
-* int iesire[100]: tablou unidimensional pentru stocarea starilor de iesire;\
-* int i,j: contori pentru instrunctiunile repetitive\
-* int numarStari: numarul total al starilor;\
-* int numarLegaturi: numarul total al legaturilor;\
-* int numarIesiri: numarul starilor de iesire;\
+Pentru reprezentarea automatului si a legaturilor,am folosit o matrice,in care elementele a[stareInitiala][literaLegatura] = stareFinala au urmatoarea configuratie:
+  * stareInitiala- variabila de tip int pentru starea din care pleaca legatura;
+  * literaLegatura- variabila de tip char ce reprezinta litera de legatura intre cele doua stari;
+  * stareFinala- variabila de tip int ce reprezinta starea in care ajunge legatura.
+* int iesire[100]: tablou unidimensional pentru stocarea starilor de iesire;
+* int i,j: contori pentru instrunctiunile repetitive
+* int numarStari: numarul total al starilor;
+* int numarLegaturi: numarul total al legaturilor;
+* int numarIesiri: numarul starilor de iesire;
 * int stareInitiala: variabila folosita in citirea matricii (starea din care pleaca legatura) si reprezinta in
-algoritmul in sine starea actuala in care se afla cuvantul;\
-* char literaLegatura: variabila folosita in citire,este litera prin care se face legatura;\
+algoritmul in sine starea actuala in care se afla cuvantul;
+* char literaLegatura: variabila folosita in citire,este litera prin care se face legatura;
 * int stareFinala: variabila folosita in citire,reprezinta starea in care ajunge legatura;
 ## Descrierea algoritmului:
 * initializez elementele matricei cu -1 pentru a incepe cu un automat vid(nicio stare,nicio legatura);
