@@ -27,7 +27,7 @@ algoritmul in sine starea actuala in care se afla cuvantul;\
 * se citesc numarul de stari,numarul de legaturi,starea de inceput a automatului;
 * pentru fiecare legatura,se citeste starea din care pleaca legatura (stareInitiala),litera de legatura(literaLegatura) si starea in care ajunge legatura,in aceasta ordine(stareFinala).Dupa fiecare citire a acestui triplet,se marcheaza in matricea automatului legatura,dupa formula:
 a[stareInitiala][literaLegatura-31] = stareFinala;
-Observatie : se scade 31 din litera pentru ca,in codul
+  * Observatie : se scade 31 din litera pentru ca,in codul
 ASCII,caracterele ce pot fi scrise de la tastatura incep de la numarul 32.Astfel,in reprezentarea interna a matricii,a doua coordonata incepe de la 1;
 * se citeste numarul starilor de iesire;
 * se citesc starile de iesire si se salveaza intr-un tablou unidimensional(iesire[]);
